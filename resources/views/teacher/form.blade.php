@@ -19,22 +19,22 @@
 
                     <div class="form-group">
                         <label for="name">名前</label>
-                        <input type="text" class="form-control" name="name" value="{{ $teacher->name }}">
+                        <input type="text" class="form-control" name="name" value="{{ $teachers->name }}">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" name="email" value="{{ $teacher->email }}">
+                        <input type="email" class="form-control" name="email" value="{{ $teachers->email }}">
                     </div>
 
                     <div class=" form-group">
                         <label for="password">パスワード</label>
-                        <input type="password" class="form-control" name="password" value="{{ $teacher->password }}">
+                        <input type="password" class="form-control" name="password" value="{{ $teachers->password }}">
                     </div>
 
                     <div class="form-group">
                         <label for="password-confirm">確認用パスワード</label>
-                        <input type="password" class="form-control" name="password_confirmation" value="{{ $teacher->password_confirmation }}">
+                        <input type="password" class="form-control" name="password_confirmation" value="{{ $teachers->password_confirmation }}">
                     </div>
 
 

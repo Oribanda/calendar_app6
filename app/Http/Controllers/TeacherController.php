@@ -21,9 +21,9 @@ class TeacherController extends Controller
 
     public function create()
     {
-        $teacher = new Teacher();
+        $teachers = new Teacher();
 
-        return view('teacher/create', compact('teacher'));
+        return view('teacher/create', compact('teachers'));
     }
 
     public function edit($id)

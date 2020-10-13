@@ -18,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['middleware' => ['teacher']], function(){
+
+});
 Route::resource('user', 'UserController');
 Route::resource('teacher', 'TeacherController');
 
