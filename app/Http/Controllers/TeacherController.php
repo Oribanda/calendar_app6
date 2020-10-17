@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Teacher;
 use Illuminate\Support\Facades\Auth;
@@ -11,9 +10,7 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        // ログインしているteacher
         $teachers = Auth::teacher();
-
 
         // 取得した値をビュー「teacher/index」に渡す
         return view('teacher/index', compact('teachers'));
@@ -21,9 +18,9 @@ class TeacherController extends Controller
 
     public function create()
     {
-        $teachers = new Teacher();
+        $teacher = new Teacher();
 
-        return view('teacher/create', compact('teachers'));
+        return view('teacher/create', compact('teacher'));
     }
 
     public function edit($id)
@@ -31,7 +28,7 @@ class TeacherController extends Controller
         // DBよりURIパラメータと同じIDを持つTeacherの情報を取得
         $teacher = Teacher::findOrFail($id);
 
-        // 取得した値をビュー「teacher/edit」に渡す
+        // 取得した値をビュー「user/edit」に渡す
         return view('teacher/edit', compact('teacher'));
     }
 

@@ -18,11 +18,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => ['teacher']], function(){
 
-});
 Route::resource('user', 'UserController');
-Route::resource('teacher', 'TeacherController');
+Route::get('teacher', 'TeacherController@index');
+// Route::resource('teacher', 'TeacherController');
+
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::resource('teacher', 'TeacherController');
+// });
+
+
+Route::prefix('teacher')->namespace('Teacher')->name('teacher.')->group(function () {
+    Auth::routes();
+
+    Route::get('/home', 'TeacherHomeController@index')->name('teacher_home');
+});
+
 
 Auth::routes();
 

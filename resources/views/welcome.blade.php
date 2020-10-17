@@ -82,7 +82,7 @@
         </div>
         @endif
         <div>
-            <a href="/teacher/create" class=" btn btn-default">先生はこちら</a>
+            <a href="/teacher/login" class=" btn btn-default">先生はこちら</a>
         </div>
         <div class="content">
             <div class="title m-b-md">

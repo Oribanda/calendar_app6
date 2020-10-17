@@ -11,12 +11,12 @@
             <h3 class="ops-title">{{ $teachers->name }}</h3>
 
             <div>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                <a class="dropdown-item" href="{{ route('teacher.logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
                 </a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </div>
@@ -46,6 +46,8 @@
                     </tr>
 
                 </table>
-                <div><a href="/teacher/{{ $teachers->id }}/edit" class=" btn btn-default">登録情報編集</a></div>
+                <div>
+                    <a href="/user/{{ $teachers->id }}/edit" class=" btn btn-default">登録情報編集</a>
+                </div>
             </div>
         </div>
