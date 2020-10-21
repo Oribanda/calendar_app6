@@ -73,17 +73,16 @@
             @auth
             <a href="{{ url('/home') }}">Home</a>
             @else
-            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('login') }}">ログイン</a>
 
             @if (Route::has('register'))
-            <a href="{{ route('register') }}">Register</a>
+            <a href="{{ route('register') }}">新規登録</a>
             @endif
             @endauth
+            <a href="/teacher/login">先生はこちら</a>
         </div>
         @endif
-        <div>
-            <a href="/teacher/login" class=" btn btn-default">先生はこちら</a>
-        </div>
+
         <div class="content">
             <div class="title m-b-md">
                 Laravel

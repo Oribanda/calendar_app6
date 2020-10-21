@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,18 +21,18 @@ Route::get('/', function () {
 
 
 Route::resource('user', 'UserController');
-Route::get('teacher', 'TeacherController@index');
-// Route::resource('teacher', 'TeacherController');
 
-// Route::group(['middleware' => ['auth']], function () {
-//     Route::resource('teacher', 'TeacherController');
-// });
 
 
 Route::prefix('teacher')->namespace('Teacher')->name('teacher.')->group(function () {
     Auth::routes();
+    Route::get('/', 'TeacherController@index')->name('index');
+    Route::get('/home', 'TeacherHomeController@index')->name('home');
 
-    Route::get('/home', 'TeacherHomeController@index')->name('teacher_home');
+    // Route::middleware(['auth', 'teacher'])->group(function () {
+    //     Route::get('/', 'TeacherController@index')->name('index');
+    //     Route::get('/teacher/home', 'TeacherHomeController@index')->name('home');
+    // });
 });
 
 

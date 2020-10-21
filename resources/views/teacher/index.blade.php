@@ -13,7 +13,7 @@
             <div>
                 <a class="dropdown-item" href="{{ route('teacher.logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
+                    {{ __('ログアウト') }}
                 </a>
 
                 <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" class="d-none">
@@ -21,6 +21,8 @@
                 </form>
             </div>
         </div>
+
+
 
         <div class="row">
             <div class="col-md-11 col-md-offset-1">
@@ -47,7 +49,7 @@
 
                 </table>
                 <div>
-                    <a href="/user/{{ $teachers->id }}/edit" class=" btn btn-default">登録情報編集</a>
+                    <a href="/teacher/{{ $teachers->id }}/edit" class=" btn btn-default">登録情報編集</a>
                 </div>
             </div>
         </div>

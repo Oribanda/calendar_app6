@@ -9,7 +9,7 @@
             @if($target == 'store')
             <form action="/teacher" method="post" enctype="multipart/form-data">
                 @csrf
-                @include('user/message')
+                @include('teacher/message')
                 @elseif($target == 'update')
                 <form action="/teacher/{{ $teacher->id }}" method="post" enctype="multipart/form-data">
                     @include('teacher/message')
@@ -40,7 +40,7 @@
 
 
                     <button type="submit" class="btn btn-default">登録</button>
-                    <a href="/user">戻る</a>
+                    <a href="/teacher">戻る</a>
                 </form>
         </div>
     </div>

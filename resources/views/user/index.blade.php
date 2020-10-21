@@ -10,16 +10,6 @@
 
             <h3 class="ops-title">{{ $users->name }}</h3>
 
-            <div>
-                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </div>
         </div>
 
         <div class="row">
@@ -47,7 +37,18 @@
 
                 </table>
                 <div>
-                    <a href="/user/{{ $users->id }}/edit" class=" btn btn-default">登録情報編集</a>
+                    <a href="/user/{{ $users->id }}/edit" class="btn btn-default">登録情報編集</a>
                 </div>
+
+                <div>
+                    <a class="btn btn-default" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                        {{ __('ログアウト') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </div>
+
             </div>
         </div>
