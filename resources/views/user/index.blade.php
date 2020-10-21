@@ -36,11 +36,12 @@
                     </tr>
 
                 </table>
-                <div>
-                    <a href="/user/{{ $users->id }}/edit" class="btn btn-default">登録情報編集</a>
-                </div>
 
                 <div>
+                    <a href="/user/{{ $users->id }}/edit" class="btn btn-default">登録情報編集</a>
+
+                    <a href="/calendar" class="btn btn-default">レッスンスケジュール</a>
+
                     <a class="btn btn-default" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                         {{ __('ログアウト') }}
