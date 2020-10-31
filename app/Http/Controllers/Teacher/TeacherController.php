@@ -12,10 +12,15 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        $teachers = Auth::teacher();
-        \Log::info($teachers);
+        // $this->middleware('auth');
+        // $teachers = Teacher::all(); // index.bladeで[0]と指定する事でid1のデータは取得できるが、他のteacherでログインしてもid1を取得してしまう。[0]を外すとエラーが出る。
+        // $teachers = Auth::teacher();
+        // $users = Auth::guard('Teacher')->user();
 
-        return view('teacher/index', compact('teachers'));
+        // \Log::info(Auth::guard('Teacher')->user());
+
+        return view('teacher/index');
+        // return view('teacher/index', compact('teachers')); // $teachers = Teacher::all();で使える。
     }
 
     public function create()
@@ -23,6 +28,7 @@ class TeacherController extends Controller
         $teacher = new Teacher();
 
         return view('teacher/create', compact('teacher'));
+        // return view('teacher/create');
     }
 
     public function edit($id)
@@ -30,8 +36,11 @@ class TeacherController extends Controller
         // DBよりURIパラメータと同じIDを持つTeacherの情報を取得
         $teacher = Teacher::findOrFail($id);
 
+        \Log::info($teacher);
+        \Log::info($id);
         // 取得した値をビュー「teacher/edit」に渡す
         return view('teacher/edit', compact('teacher'));
+        // return view('teacher/edit');
     }
 
     public function update(Request $request, $id)

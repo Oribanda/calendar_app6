@@ -23,29 +23,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+// Userのルーティング
 Route::resource('user', 'UserController');
 
 
-
+// Teacherのルーティング
 Route::prefix('teacher')->namespace('Teacher')->name('teacher.')->group(function () {
     Auth::routes();
-    Route::get('/', 'TeacherController@index')->name('index');
-    Route::get('/home', 'TeacherHomeController@index')->name('home');
-
-    // Route::middleware(['auth', 'teacher'])->group(function () {
-    //     Route::get('/', 'TeacherController@index')->name('index');
-    //     Route::get('/teacher/home', 'TeacherHomeController@index')->name('home');
-    // });
+    Route::resource('/', 'TeacherController');
+    Route::get('/home', 'TeacherHomeController@index')->name('teacher_home');
 });
 
+
+
+// カレンダーのルーティング
 Route::get('/calendar', 'CalendarController@show');
-
-//祝日設定
-Route::get('/schedule_setting', 'Calendar\ScheduleSettingController@form')
-    ->name("schedule_setting");
-Route::post('/schedule_setting', 'Calendar\ScheduleSettingController@update')
-    ->name("update_schedule_setting");
-
 
 //臨時営業設定
 Route::get('/lesson_schedule_setting', 'Calendar\LessonScheduleSettingController@form')->name("lesson_schedule_setting");

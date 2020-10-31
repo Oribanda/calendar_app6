@@ -11,7 +11,7 @@
                 @csrf
                 @include('teacher/message')
                 @elseif($target == 'update')
-                <form action="/teacher/{{ $teacher->id }}" method="post" enctype="multipart/form-data">
+                <form action="/teacher/{{ Auth::guard('teacher')->user()->id }}" method="post" enctype="multipart/form-data">
                     @include('teacher/message')
                     <input type="hidden" name="_method" value="PUT">
                     @endif

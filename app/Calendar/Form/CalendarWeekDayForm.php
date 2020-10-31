@@ -25,7 +25,7 @@ class CalendarWeekDayForm extends CalendarWeekDay
         $comment_form_name = "lesson_schedule[" . $this->carbon->format("Ymd") . "][comment]";
 
         //定休日設定の値
-        $defaultValue = ($this->isHoliday) ? "休み" : "営業日";
+        $defaultValue = ($this->isHoliday) ? "" : "";
 
         //臨時休業が選択されているかどうか
         $isSelectedExtraClose = ($this->lessonSchedule && $this->lessonSchedule->isClose()) ? 'selected' : '';
@@ -44,9 +44,9 @@ class CalendarWeekDayForm extends CalendarWeekDay
 
         //臨時営業・臨時休業設定
         $html[] = '<select name="' . $select_form_name . '" class="form-control">';
-        $html[] = '<option value="0">- (' . $defaultValue . ')</option>';
-        $html[] = '<option value="' . LessonSchedule::CLOSE . '" ' . $isSelectedExtraClose . '>臨時休業</option>';
-        $html[] = '<option value="' . LessonSchedule::OPEN . '" ' . $isSelectedExtraOpen . '>臨時営業</option>';
+        $html[] = '<option value="0">- ' . $defaultValue . '</option>';
+        $html[] = '<option value="' . LessonSchedule::CLOSE . '" ' . $isSelectedExtraClose . '>レッスン</option>';
+        $html[] = '<option value="' . LessonSchedule::OPEN . '" ' . $isSelectedExtraOpen . '>休み</option>';
         $html[] = '</select>';
 
         //コメント
