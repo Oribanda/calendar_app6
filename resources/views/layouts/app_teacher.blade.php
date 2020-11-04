@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/calendar.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -53,13 +54,17 @@
                         @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                {{ Auth::guard('teacher')->user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('teacher.logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                                        document.getElementById('logout-form').submit();">
+                                    {{ __('ログアウト') }}
+
+                                </a>
+                                <a class="dropdown-item" href="/teacher">
+                                    一覧画面に戻る
                                 </a>
 
                                 <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" class="d-none">

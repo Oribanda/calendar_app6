@@ -41,6 +41,8 @@
 
                     <a href="/calendar" class="btn btn-default">レッスンスケジュール</a>
 
+                    <a href="/lesson_schedule_setting" class="btn btn-default">レッスンスケジュール設定</a>
+
                     <a class="btn btn-default" href="{{ route('teacher.logout') }}" onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
                         {{ __('ログアウト') }}

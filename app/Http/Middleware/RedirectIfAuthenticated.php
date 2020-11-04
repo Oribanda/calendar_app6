@@ -24,6 +24,13 @@ class RedirectIfAuthenticated
             return redirect(RouteServiceProvider::HOME);
         }
 
+        // 下記だとUserかTeacherのどちらかでログインしていると片方はログインできない
+        // if (Auth::guard()->check())
+        // return redirect(RouteServiceProvider::HOME);
+        // if (Auth::guard('teacher')->check())
+        // return redirect(RouteServiceProvider::TEACHER_HOME);
+
         return $next($request);
     }
 }
+

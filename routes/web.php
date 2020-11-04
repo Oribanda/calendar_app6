@@ -30,10 +30,10 @@ Route::resource('user', 'UserController');
 // Teacherのルーティング
 Route::prefix('teacher')->namespace('Teacher')->name('teacher.')->group(function () {
     Auth::routes();
-    Route::resource('/', 'TeacherController');
+
     Route::get('/home', 'TeacherHomeController@index')->name('teacher_home');
 });
-
+Route::resource('teacher', 'TeacherController');
 
 
 // カレンダーのルーティング
