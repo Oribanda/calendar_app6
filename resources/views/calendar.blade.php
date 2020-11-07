@@ -1,5 +1,9 @@
-@extends('layouts.app')
-@extends('layouts.app_teacher')
+@if ($users = Auth::user() == user)
+@extends(layouts.app)
+@else
+@extends(layouts.app_teacher)
+@endif
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

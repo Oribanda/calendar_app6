@@ -42,7 +42,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        @guest('teacher')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('teacher.login') }}">{{ __('ログイン') }}</a>
                         </li>
