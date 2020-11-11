@@ -71,3 +71,4 @@ class CalendarWeekDayForm extends CalendarWeekDay
         return implode(" ", $classNames);
     }
 }
+

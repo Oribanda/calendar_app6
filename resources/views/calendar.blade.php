@@ -1,8 +1,5 @@
-@if ($users = Auth::user() == user)
-@extends(layouts.app)
-@else
-@extends(layouts.app_teacher)
-@endif
+@extends(Auth::user() ? 'layouts.app' : 'layouts.app_teacher')
+
 
 @section('content')
 <div class="container">

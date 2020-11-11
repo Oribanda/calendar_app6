@@ -37,3 +37,4 @@ class CreateScheduleSettingTable extends Migration
         Schema::dropIfExists('schedule_setting');
     }
 }
+

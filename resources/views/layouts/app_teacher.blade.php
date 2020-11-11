@@ -63,9 +63,20 @@
                                     {{ __('ログアウト') }}
 
                                 </a>
+
+                                <a class="dropdown-item" href="/lesson_schedule_setting">
+                                    レッスンスケジュール設定
+                                </a>
+
+                                <a class="dropdown-item" href="/calendar">
+                                    レッスンスケジュール
+                                </a>
+
                                 <a class="dropdown-item" href="/teacher">
                                     一覧画面に戻る
                                 </a>
+
+
 
                                 <form id="logout-form" action="{{ route('teacher.logout') }}" method="POST" class="d-none">
                                     @csrf

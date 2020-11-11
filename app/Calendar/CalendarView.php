@@ -29,6 +29,7 @@ class CalendarView
         return $this->carbon->copy()->subMonthsNoOverflow()->format('Y-m');
     }
 
+
     function __construct($date)
     {
         $this->carbon = new Carbon($date);
