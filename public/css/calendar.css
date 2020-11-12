@@ -1,7 +1,12 @@
 .day-blank {
     background-color: #efefef;
+    overflow: auto;
 
 }
+
+/* .day {
+    overflow: auto;
+} */
 
 .day-sun .day {
     color:red;
@@ -35,6 +40,18 @@
 
 .day-close {
     background-color: #FF7F50;
+
+}
+
+.calendar table {
+    /* table-layout: auto; */
+    table-layout: fixed;
+    overflow: scroll;
+}
+
+.calendar table .comment {
+    font-size: small;
+    overflow: auto;
 
 }
 

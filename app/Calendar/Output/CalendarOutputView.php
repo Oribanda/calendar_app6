@@ -38,7 +38,7 @@ class CalendarOutputView extends CalendarView
         $html[] = $day->render();
 
         if ($lessonSchedule) {
-            $html[] = '<p class="comment">' . e($lessonSchedule->comment) . '</p>';
+            $html[] = '<p class="comment" cols="40" rows="6" style="overflow:auto;">' . e($lessonSchedule->comment) . '</p>';
         }
         $html[] = '</td>';
 
