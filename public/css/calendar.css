@@ -1,60 +1,26 @@
 .day-blank {
-    background-color: #efefef;
-    overflow: auto;
-
+	background-color: #efefef;
 }
-
-/* .day {
-    overflow: auto;
-} */
-
-.day-sun .day {
-    color:red;
+th {
+	color:red;
 }
-
-.day-sat .day {
-    color: blue;
+.day-sat .day{
+	color: blue;
 }
-
 .calendar table td {
 	padding: 3px;
-    border: solid 1px #999;
-
+	border: solid 1px #999;
 }
-
 .calendar table td:before {
 	display: block;
 	float: left;
 	height: 50px;
-    content: "";
+	content: "";
 }
-
 .calendar table td .day {
-    margin-bottom: 0;
-
+	margin-bottom: 0;
 }
 .calendar table th {
 	text-align: center;
-    border: solid 1px #999;
-}
-
-.day-close {
-    background-color: #FF7F50;
-
-}
-
-.calendar table {
-    /* table-layout: auto; */
-    table-layout: fixed;
-    overflow: scroll;
-}
-
-.calendar table .comment {
-    font-size: small;
-    overflow: auto;
-
-}
-
-.comment {
-    overflow: scroll;
+	border: solid 1px #999;
 }

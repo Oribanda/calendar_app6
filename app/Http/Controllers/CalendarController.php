@@ -2,30 +2,80 @@
 
 namespace App\Http\Controllers;
 
+use App\Calendar;
 use Illuminate\Http\Request;
-use App\Calendar\Output\CalendarOutputView;
+use App\Lesson;
 
 class CalendarController extends Controller
 {
-    public function show(Request $request)
+    public function index(Request $request)
     {
-        //クエリーのdateを受け取る
-        $date = $request->input("date");
+        $list = Lesson::all();
+        $cal = new Calendar($list);
+        $tag = $cal->showCalendarTag($request->month, $request->year);
 
-        //dateがYYYY-MMの形式かどうか判定する
-        if ($date && preg_match("/^[0-9]{4}-[0-9]{2}$/", $date)) {
-            $date = strtotime($date . "-01");
+        return view('calendar.index', ['cal_tag' => $tag]);
+    }
+
+    public function getLesson(Request $request)
+    {
+        // Lessonデータ取得
+        $data = new Lesson();
+        $list = Lesson::all();
+        return view('calendar.lesson', ['list' => $list, 'data' => $data]);
+    }
+
+    public function getLessonId($id)
+    {
+        // Lessonデータ取得
+        $data = new Lesson();
+        if (isset($id))
+        {
+            $data = Lesson::where('id', '=', $id)->first();
+        }
+        $list = Lesson::all();
+        return view('calendar.lesson', ['list' => $list, 'data' => $data]);
+    }
+
+    public function deleteLesson(Request $request)
+    {
+        // DELETEで受信したレッスンのデータの削除
+        if (isset($request->id))
+        {
+            $lesson = Lesson::where('id', '=', $request->id)->first();
+            $lesson->delete();
+        }
+        // Lessonデータ取得
+        $data = new Lesson();
+        $list = Lesson::all();
+        return view('calendar.lesson', ['list' => $list, 'data' => $data]);
+    }
+
+    public function postLesson(Request $request)
+    {
+        $validatedData = $request->validate([
+            'day' => 'required|date_format:Y-m-d',
+            'description' => 'required',
+        ]);
+
+        // POSTで受信したLessonデータの登録
+        if (isset($request->id))
+        {
+            $lesson = Lesson::where('id', '=', $request->id)->first();
+            $lesson->day = $request->day;
+            $lesson->description = $request->description;
+            $lesson->save();
         } else {
-            $date = null;
+            $lesson = new Lesson();
+            $lesson->day = $request->day;
+            $lesson->description = $request->description;
+            $lesson->save();
         }
 
-        //取得出来ない時は現在(=今月)を指定する
-        if (!$date) $date = time();
 
-        $calendar = new CalendarOutputView($date);
-
-        return view('calendar', [
-            "calendar" => $calendar
-        ]);
+        // Lessonデータ取得
+        $data = new Lesson();
+        $list = Lesson::all();
+        return view('calendar.lesson', ['list' => $list, 'data' => $data]);
     }
 }

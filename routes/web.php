@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/home', 'HomeController@index')->name('home');
 
@@ -36,9 +36,14 @@ Route::prefix('teacher')->namespace('Teacher')->name('teacher.')->group(function
 Route::resource('teacher', 'TeacherController');
 
 
-// カレンダーのルーティング
-Route::get('/calendar', 'CalendarController@show');
+// カレンダー（Lesson）のルーティング
+Route::get('/lesson', 'CalendarController@getLesson');
+Route::post('/lesson', 'CalendarController@postLesson');
+// 1日のレッスン日のルーティング
+Route::get('/lesson/{id}', 'CalendarController@getLessonId');
+// レッスン日の削除のルーティング
+Route::delete('/lesson', 'CalendarController@deleteLesson');
 
-//臨時営業設定
-Route::get('/lesson_schedule_setting', 'Calendar\LessonScheduleSettingController@form')->name("lesson_schedule_setting");
-Route::post('/lesson_schedule_setting', 'Calendar\LessonScheduleSettingController@update')->name("update_lesson_schedule_setting");
+// カレンダーのルーティング
+Route::get('/calendar', 'CalendarController@index');
+

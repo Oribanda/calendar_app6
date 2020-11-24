@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLessonScheduleSetting extends Migration
+class Lesson extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateLessonScheduleSetting extends Migration
      */
     public function up()
     {
-        Schema::create('lesson_schedule_setting', function (Blueprint $table) {
-            $table->id();
-            $table->string("date_key", 8)->unique();
-            $table->integer("date_flag")->default(0);
-            $table->string("comment")->nullable();
+        Schema::create('lessons', function (Blueprint $table) {
+            $table->increments('id');
+            $table->date('day');
+            $table->string('description');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateLessonScheduleSetting extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lesson_schedule_setting');
+        Schema::drop('lessons');
     }
 }
