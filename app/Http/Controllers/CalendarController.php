@@ -8,13 +8,15 @@ use App\Lesson;
 
 class CalendarController extends Controller
 {
+
+
     public function index(Request $request)
     {
         $list = Lesson::all();
         $cal = new Calendar($list);
         $tag = $cal->showCalendarTag($request->month, $request->year);
-
         return view('calendar.index', ['cal_tag' => $tag]);
+        // return view('calendar.index');
     }
 
     public function getLesson(Request $request)
@@ -29,8 +31,7 @@ class CalendarController extends Controller
     {
         // Lessonデータ取得
         $data = new Lesson();
-        if (isset($id))
-        {
+        if (isset($id)) {
             $data = Lesson::where('id', '=', $id)->first();
         }
         $list = Lesson::all();
@@ -40,8 +41,7 @@ class CalendarController extends Controller
     public function deleteLesson(Request $request)
     {
         // DELETEで受信したレッスンのデータの削除
-        if (isset($request->id))
-        {
+        if (isset($request->id)) {
             $lesson = Lesson::where('id', '=', $request->id)->first();
             $lesson->delete();
         }
@@ -59,8 +59,7 @@ class CalendarController extends Controller
         ]);
 
         // POSTで受信したLessonデータの登録
-        if (isset($request->id))
-        {
+        if (isset($request->id)) {
             $lesson = Lesson::where('id', '=', $request->id)->first();
             $lesson->day = $request->day;
             $lesson->description = $request->description;
@@ -72,10 +71,11 @@ class CalendarController extends Controller
             $lesson->save();
         }
 
-
         // Lessonデータ取得
         $data = new Lesson();
         $list = Lesson::all();
         return view('calendar.lesson', ['list' => $list, 'data' => $data]);
     }
+
+
 }
